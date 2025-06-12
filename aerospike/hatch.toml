@@ -1,0 +1,16 @@
+[env.collectors.datadog-checks]
+
+[[envs.default.matrix]]
+python = ["3.12"]
+
+version = ["7.2"]
+
+[envs.default.overrides]
+matrix.version.env-vars = [
+  { key = "AEROSPIKE_VERSION", value = "7.2.0.4", if = ["7.2"] },
+  { key = "AEROSPIKE_EXPORTER_VERSION", value = "1.22.0", if = ["7.2"] },
+  { key = "DOCKER_COMPOSE_FILENAME", value = "docker-compose.yaml", if = ["7.2"] },
+]
+
+[envs.default.env-vars]
+AEROSPIKE_TOOLS_VERSION = "11.0.2"
