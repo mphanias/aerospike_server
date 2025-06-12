@@ -1,0 +1,62 @@
+[build-system]
+requires = [
+    "hatchling>=0.11.2",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "datadog-aerospike_enterprise"
+description = "The Aerospike Enterprise check"
+readme = "README.md"
+keywords = [
+    "datadog",
+    "datadog agent",
+    "datadog check",
+    "aerospike-enterprise",
+]
+authors = [
+    { name = "Datadog", email = "packages@datadoghq.com" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Monitoring",
+    "Private :: Do Not Upload",
+]
+dependencies = [
+    "datadog-checks-base>=37.4.0",
+]
+dynamic = [
+    "version",
+]
+
+license = "BSD-3-Clause"
+
+[project.optional-dependencies]
+deps = [
+    "aerospike==7.1.1; sys_platform != 'win32' and sys_platform != 'darwin'",
+]
+
+[project.urls]
+Source = "https://github.com/DataDog/integrations-extras"
+
+[tool.hatch.version]
+path = "datadog_checks/aerospike_enterprise/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/datadog_checks",
+    "/tests",
+    "/manifest.json",
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "/datadog_checks/aerospike_enterprise",
+]
+dev-mode-dirs = [
+    ".",
+]
